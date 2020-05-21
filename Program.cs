@@ -14,8 +14,7 @@ namespace CoinappStation
         [STAThread]
         static void Main()
         {
-            
-            if (mutex.WaitOne(TimeSpan.Zero, true))
+            if (mutex.WaitOne(TimeSpan.Zero, false))
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
@@ -26,6 +25,10 @@ namespace CoinappStation
             {
                 // send our Win32 message to make the currently running instance
                 // jump on top of all the other windows
+                Mtx.PostMessage((IntPtr)Mtx.HWND_BROADCAST,Mtx.WM_SHOWME,IntPtr.Zero,IntPtr.Zero);
+                Mtx.PostMessage((IntPtr)Mtx.HWND_BROADCAST,Mtx.WM_SHOWME,IntPtr.Zero,IntPtr.Zero);
+                Mtx.PostMessage((IntPtr)Mtx.HWND_BROADCAST,Mtx.WM_SHOWME,IntPtr.Zero,IntPtr.Zero);
+                Mtx.PostMessage((IntPtr)Mtx.HWND_BROADCAST,Mtx.WM_SHOWME,IntPtr.Zero,IntPtr.Zero);
                 Mtx.PostMessage((IntPtr)Mtx.HWND_BROADCAST,Mtx.WM_SHOWME,IntPtr.Zero,IntPtr.Zero);
             }
         }

@@ -14,7 +14,7 @@ namespace CoinappStation
         [STAThread]
         static void Main()
         {
-            string vax = "";
+            
             if (mutex.WaitOne(TimeSpan.Zero, true))
             {
                 Application.EnableVisualStyles();

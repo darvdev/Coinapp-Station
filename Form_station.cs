@@ -41,6 +41,9 @@ namespace CoinappStation
         private ToolStripMenuItem unmuteToolStrip = new ToolStripMenuItem("Unmute");
         private ToolStripMenuItem shutdownToolStrip = new ToolStripMenuItem("Shutdown");
 
+
+        Form_login form_login;
+
         public Form_station()
         {
             InitializeComponent();
@@ -59,7 +62,20 @@ namespace CoinappStation
             unmuteToolStrip.Click += UnmuteToolStrip_Click;
             shutdownToolStrip.Click += ShutdownToolStrip_Click;
         }
-        
+
+        protected override void SetVisibleCore(bool value)
+        {
+            if (!this.IsHandleCreated)
+            {
+                this.CreateHandle();
+                value = false;
+                form_login = new Form_login();
+                form_login.Show();
+            }
+
+            base.SetVisibleCore(value);
+        }
+
         private void ShutdownToolStrip_Click(object sender, EventArgs e)
         {
             TcpClient client = tcpClients[clientDataId];

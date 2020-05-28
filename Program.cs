@@ -7,6 +7,8 @@ namespace CoinappStation
 {
     static class Program
     {
+        public static Form_station form_station;
+        
         static Mutex mutex = new Mutex(true, "{8F6F0AC4-B9A1-45fd-A8CF-72F04E6BDE8F}");
         /// <summary>
         /// The main entry point for the application.
@@ -18,7 +20,8 @@ namespace CoinappStation
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Form_station());
+                form_station = new Form_station();
+                Application.Run(form_station);
                 mutex.ReleaseMutex();
             }
             else

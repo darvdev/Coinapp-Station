@@ -22,3 +22,4 @@ C:\Users\vinstudios\Source\Repos\CoinappStation\obj\Debug\CoinappStation.csproj.
 C:\Users\vinstudios\Source\Repos\CoinappStation\obj\Debug\CoinappStation.csproj.CoreCompileInputs.cache
 C:\Users\vinstudios\Source\Repos\CoinappStation\obj\Debug\CoinappStation.exe
 C:\Users\vinstudios\Source\Repos\CoinappStation\obj\Debug\CoinappStation.pdb
+C:\Users\vinstudios\source\repos\CoinappStation\obj\Debug\CoinappStation.Form_login.resources

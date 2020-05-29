@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using Firebase.Auth;
+
 
 namespace CoinappStation
 {
@@ -28,6 +30,18 @@ namespace CoinappStation
         {
             start = true;
             Close();
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            string apiKey = "AIzaSyB9megvjoiTrj14RU-3wAPqxGGufGkkPpU";
+            FirebaseAuthProvider authProvider = new FirebaseAuthProvider(new FirebaseConfig(apiKey));
+
+            
+            var auth = await authProvider.SignInAnonymouslyAsync();
+
+            MessageBox.Show(auth.User.LocalId);
+
         }
     }
 }

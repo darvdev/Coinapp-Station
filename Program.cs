@@ -7,6 +7,7 @@ namespace CoinappStation
 {
     static class Program
     {
+        public static string FirebaseToken;
         public static Form_station form_station;
         
         static Mutex mutex = new Mutex(true, "{8F6F0AC4-B9A1-45fd-A8CF-72F04E6BDE8F}");

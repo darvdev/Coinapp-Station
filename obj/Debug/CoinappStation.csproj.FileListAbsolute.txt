@@ -23,7 +23,6 @@ C:\Users\vinstudios\Source\Repos\CoinappStation\obj\Debug\CoinappStation.exe
 C:\Users\vinstudios\Source\Repos\CoinappStation\obj\Debug\CoinappStation.pdb
 C:\Users\vinstudios\source\repos\CoinappStation\obj\Debug\CoinappStation.Form_login.resources
 C:\Users\vinstudios\source\repos\CoinappStation\bin\Debug\Newtonsoft.Json.dll
-C:\Users\vinstudios\source\repos\CoinappStation\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
 C:\Users\vinstudios\source\repos\CoinappStation\bin\Debug\Newtonsoft.Json.xml
 C:\Users\vinstudios\source\repos\CoinappStation\obj\Debug\CoinappStation.csproj.CopyComplete
 C:\Users\vinstudios\source\repos\CoinappStation\bin\Debug\Firebase.Auth.dll

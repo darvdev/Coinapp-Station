@@ -1,4 +1,4 @@
-﻿namespace CoinappStation.constant
+﻿namespace CoinappStation.Authentication
 {
     public class API
     {

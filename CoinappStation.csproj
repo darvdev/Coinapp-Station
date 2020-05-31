@@ -55,7 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="constant\API.cs" />
+    <Compile Include="Authentication\Auth.cs" />
+    <Compile Include="Brain.cs" />
+    <Compile Include="Authentication\API.cs" />
     <Compile Include="Form_dialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +69,12 @@
     </Compile>
     <Compile Include="Form_login.Designer.cs">
       <DependentUpon>Form_login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_signup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_signup.Designer.cs">
+      <DependentUpon>Form_signup.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_station.cs">
       <SubType>Form</SubType>
@@ -80,7 +88,13 @@
     <Compile Include="Form_settings.Designer.cs">
       <DependentUpon>Form_settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="models\CurrentUser.cs" />
+    <Compile Include="Form_user.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_user.Designer.cs">
+      <DependentUpon>Form_user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CurrentUser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form_dialog.resx">
@@ -89,11 +103,17 @@
     <EmbeddedResource Include="Form_login.resx">
       <DependentUpon>Form_login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_signup.resx">
+      <DependentUpon>Form_signup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_station.resx">
       <DependentUpon>Form_station.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_settings.resx">
       <DependentUpon>Form_settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_user.resx">
+      <DependentUpon>Form_user.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

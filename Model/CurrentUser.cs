@@ -1,4 +1,4 @@
-﻿namespace CoinappStation.models
+﻿namespace CoinappStation.Model
 {
     public class CurrentUser
     {
@@ -12,5 +12,6 @@
         public bool IsEmailVerified { get; set; } 
         public string PhoneNumber { get; set; }
         public string PhotoUrl { get; set; }
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using CoinappStation.constant;
+using CoinappStation.Authentication;
 using Firebase.Auth;
 using Newtonsoft.Json;
 
@@ -24,7 +24,7 @@ namespace CoinappStation
             }
             else
             {
-                Program.form_station.Show();
+                Brain.form_station.Show();
             }
         }
 
@@ -42,9 +42,9 @@ namespace CoinappStation
             try
             {
                 authProvider = new FirebaseAuthProvider(new FirebaseConfig(API.key));
-                var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(textBox_email.Text, textBox_password.Text);
-                auth.FirebaseAuthRefreshed += Auth_FirebaseAuthRefreshed;
-                Program.FirebaseToken = auth.FirebaseToken;
+                FirebaseAuthLink auth = await authProvider.CreateUserWithEmailAndPasswordAsync(textBox_email.Text, textBox_password.Text);
+                //auth.FirebaseAuthRefreshed += Auth_FirebaseAuthRefreshed;
+                Auth.FirebaseToken = auth.FirebaseToken;
                 MessageBox.Show(auth.User.LocalId);
                 
                 //MessageBox.Show(auth.FirebaseToken);

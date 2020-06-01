@@ -3,12 +3,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CoinappStation.Authentication;
 using Firebase.Auth;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Schema;
 
 namespace CoinappStation
 {
     public partial class Form_signup : Form
     {
         private bool working = false;
+        FirebaseAuthLink auth;
         public Form_signup()
         {
             InitializeComponent();
@@ -48,7 +52,6 @@ namespace CoinappStation
                 try
                 {
                     Auth.AuthProvider = new FirebaseAuthProvider(new FirebaseConfig(API.key));
-                    FirebaseAuthLink auth = await Auth.AuthProvider.CreateUserWithEmailAndPasswordAsync(textBox_email.Text, textBox_password.Text);
 
                 }
                 catch (Exception ex) 
@@ -58,6 +61,40 @@ namespace CoinappStation
                 }
                 
             }));
+
+        }
+
+        private  void button_signup_Click(object sender, EventArgs e)
+        {
+            Task.Run((Action)(async () => {
+                try
+                {
+                    auth = await Auth.AuthProvider.CreateUserWithEmailAndPasswordAsync(textBox_email.Text, textBox_password.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.Substring(ex.Message.IndexOf("reason: "), 3), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //ShowErrorJson(ex.Message);
+                    return;
+                }
+
+                MessageBox.Show(auth.User.LocalId);
+            }));
+            
+        }
+
+        private void ShowErrorJson(string data)
+        {
+            try
+            {
+                dynamic result = JsonConvert.DeserializeObject("{"+ data + "}");
+                MessageBox.Show(result.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
         }
     }

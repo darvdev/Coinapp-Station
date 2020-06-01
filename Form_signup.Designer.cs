@@ -63,7 +63,7 @@
             this.textBox_email.Name = "textBox_email";
             this.textBox_email.Size = new System.Drawing.Size(200, 23);
             this.textBox_email.TabIndex = 1;
-            this.textBox_email.Text = "mamang";
+            this.textBox_email.Text = "darvs@gmail.com";
             // 
             // label2
             // 
@@ -169,6 +169,7 @@
             this.button_signup.TabIndex = 2;
             this.button_signup.Text = "SIGN UP";
             this.button_signup.UseVisualStyleBackColor = true;
+            this.button_signup.Click += new System.EventHandler(this.button_signup_Click);
             // 
             // label7
             // 

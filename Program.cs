@@ -19,8 +19,10 @@ namespace CoinappStation
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
+                //Brain.form_station = new Form_station();
+                //Application.Run(Brain.form_station);
                 Application.Run(new Form_signup());
-
+                
                 //if (args.Length > 0 )
                 //{
 

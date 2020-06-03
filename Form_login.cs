@@ -3,17 +3,23 @@ using System.Windows.Forms;
 using CoinappStation.Authentication;
 using Firebase.Auth;
 using Newtonsoft.Json;
+using MaterialSkin.Controls;
+using MaterialSkin;
+using System.Drawing;
 
 namespace CoinappStation
 {
-    public partial class Form_login : Form
+    public partial class Form_login : MaterialForm
     {
         bool start = false;
         FirebaseAuthProvider authProvider;
         public Form_login()
         {
             InitializeComponent();
-            //Text = ProductName + " " + ProductVersion;
+            var skinManager = MaterialSkinManager.Instance;
+            skinManager.AddFormToManage(this);
+            skinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            skinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -28,12 +34,6 @@ namespace CoinappStation
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            start = true;
-            Close();
-        }
-
         private async void button_login_Click(object sender, EventArgs e)
         {
             button_login.Enabled = false;
@@ -42,7 +42,7 @@ namespace CoinappStation
             try
             {
                 authProvider = new FirebaseAuthProvider(new FirebaseConfig(API.key));
-                FirebaseAuthLink auth = await authProvider.CreateUserWithEmailAndPasswordAsync(textBox_email.Text, textBox_password.Text);
+                FirebaseAuthLink auth = await authProvider.SignInWithEmailAndPasswordAsync(textbox_email.Text, textbox_password.Text);
                 //auth.FirebaseAuthRefreshed += Auth_FirebaseAuthRefreshed;
                 Auth.FirebaseToken = auth.FirebaseToken;
                 MessageBox.Show(auth.User.LocalId);
@@ -54,13 +54,7 @@ namespace CoinappStation
             }
             catch (Exception ex)
             {
-                dynamic result = JsonConvert.SerializeObject(ex.Message);
-                dynamic abc = JsonConvert.DeserializeObject(result);
-                MessageBox.Show(abc, "Login error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
-                button_login.Enabled = true;
-                button_login.Text = "LOGIN";
-                return;
+                this.BeginInvoke((Action)(() => MessageBox.Show(ex.Message.Substring(ex.Message.IndexOf("Reason: ") + 8), "Login error", MessageBoxButtons.OK, MessageBoxIcon.Error)));
             }
 
             button_login.Enabled = true;
@@ -97,6 +91,12 @@ namespace CoinappStation
             ////}
 
             //Product deserializedProduct = JsonConvert.DeserializeObject<Product>(json);
+        }
+
+        private void button_station_Click(object sender, EventArgs e)
+        {
+            start = true;
+            Close();
         }
     }
 }

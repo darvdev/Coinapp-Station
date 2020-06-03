@@ -73,29 +73,13 @@ namespace CoinappStation
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message.Substring(ex.Message.IndexOf("reason: "), 3), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //ShowErrorJson(ex.Message);
+                    this.BeginInvoke((Action)(() => MessageBox.Show(ex.Message.Substring(ex.Message.IndexOf("Reason: ") + 8), "Sign up error", MessageBoxButtons.OK, MessageBoxIcon.Error)));
                     return;
                 }
 
                 MessageBox.Show(auth.User.LocalId);
             }));
             
-        }
-
-        private void ShowErrorJson(string data)
-        {
-            try
-            {
-                dynamic result = JsonConvert.DeserializeObject("{"+ data + "}");
-                MessageBox.Show(result.ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
         }
     }
 }

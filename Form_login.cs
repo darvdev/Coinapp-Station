@@ -3,23 +3,17 @@ using System.Windows.Forms;
 using CoinappStation.Authentication;
 using Firebase.Auth;
 using Newtonsoft.Json;
-using MaterialSkin.Controls;
-using MaterialSkin;
 using System.Drawing;
 
 namespace CoinappStation
 {
-    public partial class Form_login : MaterialForm
+    public partial class Form_login : Form
     {
         bool start = false;
         FirebaseAuthProvider authProvider;
         public Form_login()
         {
             InitializeComponent();
-            var skinManager = MaterialSkinManager.Instance;
-            skinManager.AddFormToManage(this);
-            skinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            skinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -36,16 +30,16 @@ namespace CoinappStation
 
         private async void button_login_Click(object sender, EventArgs e)
         {
-            button_login.Enabled = false;
-            button_login.Text = "LOGGING IN...";
+            //button_login.Enabled = false;
+            //button_login.Text = "LOGGING IN...";
 
             try
             {
                 authProvider = new FirebaseAuthProvider(new FirebaseConfig(API.key));
-                FirebaseAuthLink auth = await authProvider.SignInWithEmailAndPasswordAsync(textbox_email.Text, textbox_password.Text);
+               // FirebaseAuthLink auth = await authProvider.SignInWithEmailAndPasswordAsync(textbox_email.Text, textbox_password.Text);
                 //auth.FirebaseAuthRefreshed += Auth_FirebaseAuthRefreshed;
-                Auth.FirebaseToken = auth.FirebaseToken;
-                MessageBox.Show(auth.User.LocalId);
+             //   Auth.FirebaseToken = auth.FirebaseToken;
+            //    MessageBox.Show(auth.User.LocalId);
                 
                 //MessageBox.Show(auth.FirebaseToken);
                 //var user = auth.User;
@@ -57,8 +51,8 @@ namespace CoinappStation
                 this.BeginInvoke((Action)(() => MessageBox.Show(ex.Message.Substring(ex.Message.IndexOf("Reason: ") + 8), "Login error", MessageBoxButtons.OK, MessageBoxIcon.Error)));
             }
 
-            button_login.Enabled = true;
-            button_login.Text = "LOGIN";
+            //button_login.Enabled = true;
+            //button_login.Text = "LOGIN";
 
         }
 
